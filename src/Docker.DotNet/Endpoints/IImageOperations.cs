@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Docker.DotNet.Models;
+﻿using Docker.DotNet.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Docker.DotNet
 {
@@ -49,7 +49,7 @@ namespace Docker.DotNet
         /// <exception cref="ArgumentNullException">One or more of the inputs was <see langword="null"/>.</exception>
         /// <exception cref="DockerApiException">The input is invalid or the daemon experienced an error.</exception>
         /// <exception cref="HttpRequestException">The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
-        Task BuildImageFromDockerfileAsync(ImageBuildParameters parameters, Stream contents, IEnumerable<AuthConfig> authConfigs, IDictionary<string, string> headers, IProgress<JSONMessage> progress,  CancellationToken cancellationToken = default(CancellationToken));
+        Task BuildImageFromDockerfileAsync(ImageBuildParameters parameters, Stream contents, IEnumerable<AuthConfig> authConfigs, IDictionary<string, string> headers, IProgress<JSONMessage> progress, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Builds an image from a tar archive that contains a Dockerfile.

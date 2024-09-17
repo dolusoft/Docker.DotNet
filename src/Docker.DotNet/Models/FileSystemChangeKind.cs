@@ -1,5 +1,4 @@
-﻿
-namespace Docker.DotNet.Models
+﻿namespace Docker.DotNet.Models
 {
     public enum FileSystemChangeKind
     {

@@ -1,11 +1,12 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Docker.DotNet
 {
     internal class TimeSpanNanosecondsConverter : JsonConverter
     {
-        const int MiliSecondToNanoSecond = 1000000;
+        private const int MiliSecondToNanoSecond = 1000000;
+
         public override void WriteJson(JsonWriter writer, object value, Newtonsoft.Json.JsonSerializer serializer)
         {
             var timeSpan = value as TimeSpan?;

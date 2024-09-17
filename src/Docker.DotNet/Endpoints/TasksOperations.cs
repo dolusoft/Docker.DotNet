@@ -1,9 +1,9 @@
+using Docker.DotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Docker.DotNet.Models;
 
 namespace Docker.DotNet
 {
@@ -24,7 +24,8 @@ namespace Docker.DotNet
         async Task<IList<TaskResponse>> ITasksOperations.ListAsync(TasksListParameters parameters, CancellationToken cancellationToken)
         {
             IQueryString query = null;
-            if (parameters != null) {
+            if (parameters != null)
+            {
                 query = new QueryString<TasksListParameters>(parameters);
             }
 

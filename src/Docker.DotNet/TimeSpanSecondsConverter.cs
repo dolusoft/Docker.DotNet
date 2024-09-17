@@ -1,6 +1,5 @@
-﻿using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Docker.DotNet
 {
@@ -25,7 +24,7 @@ namespace Docker.DotNet
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, Newtonsoft.Json.JsonSerializer serializer)
         {
             var valueInSeconds = (long?)reader.Value;
-            if(!valueInSeconds.HasValue)
+            if (!valueInSeconds.HasValue)
             {
                 return null;
             }

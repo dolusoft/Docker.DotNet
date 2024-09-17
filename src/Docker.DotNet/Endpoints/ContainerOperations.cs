@@ -20,6 +20,7 @@ namespace Docker.DotNet
                 throw new DockerContainerNotFoundException(statusCode, responseBody);
             }
         };
+
         internal static readonly ApiResponseErrorHandlingDelegate NoSuchImageHandler = (statusCode, responseBody) =>
         {
             if (statusCode == HttpStatusCode.NotFound)
@@ -47,14 +48,11 @@ namespace Docker.DotNet
             return this._client.JsonSerializer.DeserializeObject<ContainerListResponse[]>(response.Body);
         }
 
-        public async Task<CreateContainerResponse> CreateContainerAsync(CreateContainerParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<CreateContainerResponse> CreateContainerAsync(CreateContainerParameters parameters, CancellationToken cancellationToken = default)
         {
             IQueryString qs = null;
 
-            if (parameters == null)
-            {
-                throw new ArgumentNullException(nameof(parameters));
-            }
+            ArgumentNullException.ThrowIfNull(parameters);
 
             if (!string.IsNullOrEmpty(parameters.Name))
             {
@@ -62,7 +60,7 @@ namespace Docker.DotNet
             }
 
             var data = new JsonRequestContent<CreateContainerParameters>(parameters, this._client.JsonSerializer);
-            var response = await this._client.MakeRequestAsync(new[] { NoSuchImageHandler }, HttpMethod.Post, "containers/create", qs, data, cancellationToken).ConfigureAwait(false);
+            var response = await this._client.MakeRequestAsync([NoSuchImageHandler], HttpMethod.Post, "containers/create", qs, data, cancellationToken).ConfigureAwait(false);
             return this._client.JsonSerializer.DeserializeObject<CreateContainerResponse>(response.Body);
         }
 
@@ -242,7 +240,6 @@ namespace Docker.DotNet
             {
                 throw new ArgumentNullException(nameof(parameters));
             }
-
 
             IQueryString queryParameters = new QueryString<ContainerRestartParameters>(parameters);
             // since specified wait timespan can be greater than HttpClient's default, we set the

@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Docker.DotNet.Models;
-using System.Threading;
+using System.Collections.Generic;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Docker.DotNet
 {
@@ -242,6 +242,6 @@ namespace Docker.DotNet
         /// <param name="parameters">Parameters to update.</param>
         Task UpdateNodeAsync(string id, ulong version, NodeUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken));
 
-        #endregion
+        #endregion Nodes
     }
 }

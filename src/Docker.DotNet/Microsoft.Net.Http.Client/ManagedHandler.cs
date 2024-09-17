@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Security;
@@ -16,6 +15,7 @@ namespace Microsoft.Net.Http.Client
     public class ManagedHandler : HttpMessageHandler
     {
         public delegate Task<Stream> StreamOpener(string host, int port, CancellationToken cancellationToken);
+
         public delegate Task<Socket> SocketOpener(string host, int port, CancellationToken cancellationToken);
 
         public ManagedHandler()
@@ -63,7 +63,7 @@ namespace Microsoft.Net.Http.Client
         private SocketOpener _socketOpener;
         private IWebProxy _proxy;
 
-        protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (request == null)
             {
@@ -83,7 +83,6 @@ namespace Microsoft.Net.Http.Client
                     redirectCount++;
                     retry = true;
                 }
-
             } while (retry);
 
             return response;

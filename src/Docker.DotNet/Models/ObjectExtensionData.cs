@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Docker.DotNet.Models
 {

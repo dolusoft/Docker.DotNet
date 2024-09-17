@@ -1,3 +1,5 @@
+using Docker.DotNet.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -5,8 +7,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Docker.DotNet.Models;
-using Newtonsoft.Json;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -352,7 +352,6 @@ namespace Docker.DotNet.Tests
                 new ContainerStopParameters(),
                 _cts.Token
             );
-
 
             await Assert.ThrowsAsync<TaskCanceledException>(() => containerLogsTask);
             _output.WriteLine($"Line count: {logList.Count}");
@@ -792,7 +791,7 @@ namespace Docker.DotNet.Tests
                     AttachStdout = true,
                     AttachStderr = true,
                     AttachStdin = true,
-                    Cmd = new [] { string.Empty }
+                    Cmd = new[] { string.Empty }
                 })
                 .ConfigureAwait(false);
 

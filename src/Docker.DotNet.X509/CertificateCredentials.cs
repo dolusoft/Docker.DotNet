@@ -1,8 +1,8 @@
-﻿using System.Net;
+﻿using Microsoft.Net.Http.Client;
+using System.Net;
 using System.Net.Http;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.Net.Http.Client;
 using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Docker.DotNet.X509
 {

@@ -1,7 +1,7 @@
+using Docker.DotNet.Models;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Docker.DotNet.Models;
 
 namespace Docker.DotNet
 {

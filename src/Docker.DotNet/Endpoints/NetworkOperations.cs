@@ -1,13 +1,12 @@
-﻿
-namespace Docker.DotNet
+﻿namespace Docker.DotNet
 {
+    using Models;
     using System;
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using Models;
 
     internal class NetworkOperations : INetworkOperations
     {

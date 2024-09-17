@@ -1,11 +1,11 @@
+using Docker.DotNet.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Docker.DotNet.Models;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace Docker.DotNet.Tests
@@ -16,11 +16,11 @@ namespace Docker.DotNet.Tests
         /// The Docker image name.
         /// </summary>
         private const string Name = "nats";
-        
+
         private static readonly Progress<JSONMessage> WriteProgressOutput;
 
         private bool _hasInitializedSwarm;
-        
+
         static TestFixture()
         {
             WriteProgressOutput = new Progress<JSONMessage>(jsonMessage =>
@@ -30,7 +30,7 @@ namespace Docker.DotNet.Tests
                 Debug.WriteLine(message);
             });
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TestFixture" /> class.
         /// </summary>

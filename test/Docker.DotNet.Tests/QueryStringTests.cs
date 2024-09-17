@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Docker.DotNet.Models;
+﻿using Docker.DotNet.Models;
+using System;
 using Xunit;
 
 namespace Docker.DotNet.Tests

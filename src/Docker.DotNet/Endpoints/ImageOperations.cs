@@ -138,9 +138,9 @@ namespace Docker.DotNet
 
             Dictionary<string, string> customHeaders = RegistryAuthHeaders(authConfig);
 
-            if(headers != null)
+            if (headers != null)
             {
-                foreach(string key in headers.Keys)
+                foreach (string key in headers.Keys)
                 {
                     customHeaders[key] = headers[key];
                 }
@@ -310,9 +310,9 @@ namespace Docker.DotNet
                     Convert.ToBase64String(
                         Encoding.UTF8.GetBytes(
                             this._client.JsonSerializer.SerializeObject(authConfig ?? new AuthConfig())))
-                    .Replace("/", "_").Replace("+", "-") 
+                    .Replace("/", "_").Replace("+", "-")
                     // This is not documented in Docker API but from source code (https://github.com/docker/docker-ce/blob/10e40bd1548f69354a803a15fde1b672cc024b91/components/cli/cli/command/registry.go#L47)
-                    // and from multiple internet sources it has to be base64-url-safe. 
+                    // and from multiple internet sources it has to be base64-url-safe.
                     // See RFC 4648 Section 5. Padding (=) needs to be kept.
                 }
             };

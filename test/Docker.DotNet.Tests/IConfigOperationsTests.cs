@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Docker.DotNet.Models;
+using System;
 using System.Collections.Generic;
-using Docker.DotNet.Models;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -12,6 +12,7 @@ namespace Docker.DotNet.Tests
         private readonly DockerClientConfiguration _dockerClientConfiguration;
         private readonly DockerClient _dockerClient;
         private readonly TestOutput _output;
+
         public IConfigOperationsTests(TestFixture testFixture, ITestOutputHelper outputHelper)
         {
             _dockerClientConfiguration = testFixture.DockerClientConfiguration;
@@ -25,7 +26,7 @@ namespace Docker.DotNet.Tests
             var currentConfigs = await _dockerClient.Configs.ListConfigsAsync();
 
             _output.WriteLine($"Current Configs: {currentConfigs.Count}");
-          
+
             var testConfigSpec = new SwarmConfigSpec
             {
                 Name = $"Config-{Guid.NewGuid().ToString().Substring(1, 10)}",
@@ -55,16 +56,11 @@ namespace Docker.DotNet.Tests
             Assert.Equal(configResponse.Spec.Labels, testConfigSpec.Labels);
             Assert.Equal(configResponse.Spec.Templating, testConfigSpec.Templating);
 
-
             _output.WriteLine($"Config created is the same.");
 
             await _dockerClient.Configs.RemoveConfigAsync(createdConfig.ID);
-            
+
             await Assert.ThrowsAsync<Docker.DotNet.DockerApiException>(() => _dockerClient.Configs.InspectConfigAsync(createdConfig.ID));
-
-
-            
         }
     }
 }
-

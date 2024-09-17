@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Globalization;
-using Newtonsoft.Json;
 
 namespace Docker.DotNet
 {
@@ -12,7 +12,7 @@ namespace Docker.DotNet
 
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof (DateTime) || objectType == typeof (DateTime?);
+            return objectType == typeof(DateTime) || objectType == typeof(DateTime?);
         }
 
         public override void WriteJson(JsonWriter writer, object value, Newtonsoft.Json.JsonSerializer serializer)
@@ -22,23 +22,23 @@ namespace Docker.DotNet
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, Newtonsoft.Json.JsonSerializer serializer)
         {
-            var isNullableType = (objectType.GetTypeInfo().IsGenericType && objectType.GetGenericTypeDefinition() == typeof (Nullable<>));
+            var isNullableType = (objectType.GetTypeInfo().IsGenericType && objectType.GetGenericTypeDefinition() == typeof(Nullable<>));
             var value = reader.Value;
 
             DateTime result;
             if (value is DateTime)
             {
-                result = (DateTime) value;
+                result = (DateTime)value;
             }
             else if (value is string)
             {
                 // ISO 8601 String
-                result = DateTime.Parse((string) value, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
+                result = DateTime.Parse((string)value, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
             }
             else if (value is long)
             {
                 // UNIX epoch timestamp (in seconds)
-                result = UnixEpochBase.AddSeconds((long) value);
+                result = UnixEpochBase.AddSeconds((long)value);
             }
             else
             {

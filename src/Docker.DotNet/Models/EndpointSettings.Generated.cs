@@ -44,5 +44,8 @@ namespace Docker.DotNet.Models
 
         [DataMember(Name = "DriverOpts", EmitDefaultValue = false)]
         public IDictionary<string, string> DriverOpts { get; set; }
+
+        [DataMember(Name = "DNSNames", EmitDefaultValue = false)]
+        public IList<string> DNSNames { get; set; }
     }
 }

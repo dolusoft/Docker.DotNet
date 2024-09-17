@@ -23,7 +23,7 @@ namespace Docker.DotNet
                 throw new ArgumentNullException(nameof(name));
             }
 
-            if (converterType != null && !converterType.GetInterfaces().Contains(typeof (IQueryStringConverter)))
+            if (converterType != null && !converterType.GetInterfaces().Contains(typeof(IQueryStringConverter)))
             {
                 throw new ArgumentException($"Provided query string converter type is not {typeof(IQueryStringConverter).FullName}", nameof(converterType));
             }

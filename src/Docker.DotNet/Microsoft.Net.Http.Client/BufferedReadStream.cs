@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using Docker.DotNet;
 
 #if !NET45
+
 using System.Buffers;
+
 #endif
 
 namespace Microsoft.Net.Http.Client
@@ -182,7 +184,7 @@ namespace Microsoft.Net.Http.Client
             {
                 int toCopy = Math.Min(_bufferCount, (int)toPeek);
                 Buffer.BlockCopy(_buffer, _bufferOffset, buffer, 0, toCopy);
-                peeked = (uint) toCopy;
+                peeked = (uint)toCopy;
                 available = (uint)_bufferCount;
                 remaining = available - peeked;
                 return toCopy;

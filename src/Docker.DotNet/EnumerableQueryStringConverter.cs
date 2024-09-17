@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Docker.DotNet
 {
@@ -14,7 +14,7 @@ namespace Docker.DotNet
     {
         public bool CanConvert(Type t)
         {
-            return typeof (IEnumerable).GetTypeInfo().IsAssignableFrom(t.GetTypeInfo());
+            return typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(t.GetTypeInfo());
         }
 
         public string[] Convert(object o)
@@ -23,7 +23,7 @@ namespace Docker.DotNet
             Debug.Assert(o is IEnumerable);
 
             var items = new List<string>();
-            foreach (var e in ((IEnumerable) o))
+            foreach (var e in ((IEnumerable)o))
             {
                 if (e is ValueType ||
                     e is string)

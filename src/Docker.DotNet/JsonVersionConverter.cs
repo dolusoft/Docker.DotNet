@@ -1,5 +1,5 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Docker.DotNet
 {
@@ -24,7 +24,7 @@ namespace Docker.DotNet
 
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof (Version);
+            return objectType == typeof(Version);
         }
     }
 }

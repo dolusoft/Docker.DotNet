@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Docker.DotNet
 {

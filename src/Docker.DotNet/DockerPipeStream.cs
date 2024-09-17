@@ -1,10 +1,10 @@
+using Microsoft.Net.Http.Client;
 using System;
 using System.IO;
 using System.IO.Pipes;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Net.Http.Client;
 
 namespace Docker.DotNet
 {

@@ -1,12 +1,13 @@
 using System;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Net.Http.Client;
 
 #if !NET45
+
 using System.Buffers;
+
 #endif
 
 namespace Docker.DotNet
@@ -19,7 +20,7 @@ namespace Docker.DotNet
         private readonly byte[] _header = new byte[8];
         private readonly bool _multiplexed;
 
-        const int BufferSize = 81920;
+        private const int BufferSize = 81920;
 
         public MultiplexedStream(Stream stream, bool multiplexed)
         {
@@ -155,7 +156,7 @@ namespace Docker.DotNet
 
             try
             {
-                for (;;)
+                for (; ; )
                 {
                     var count = await input.ReadAsync(buffer, 0, buffer.Length, cancellationToken).ConfigureAwait(false);
                     if (count == 0)
@@ -184,7 +185,7 @@ namespace Docker.DotNet
 
             try
             {
-                for (;;)
+                for (; ; )
                 {
                     var result = await ReadOutputAsync(buffer, 0, buffer.Length, cancellationToken).ConfigureAwait(false);
                     if (result.EOF)
@@ -198,12 +199,15 @@ namespace Docker.DotNet
                         case TargetStream.StandardIn:
                             stream = stdin;
                             break;
+
                         case TargetStream.StandardOut:
                             stream = stdout;
                             break;
+
                         case TargetStream.StandardError:
                             stream = stderr;
                             break;
+
                         default:
                             throw new InvalidOperationException($"Unknown TargetStream: '{result.Target}'.");
                     }

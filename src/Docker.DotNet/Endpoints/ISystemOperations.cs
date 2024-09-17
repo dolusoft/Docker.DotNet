@@ -1,8 +1,8 @@
-﻿using System.IO;
+﻿using Docker.DotNet.Models;
+using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Docker.DotNet.Models;
-using System;
 
 namespace Docker.DotNet
 {
@@ -10,7 +10,7 @@ namespace Docker.DotNet
     {
         /// <summary>
         /// Check auth configuration.
-        /// 
+        ///
         /// Validate credentials for a registry and, if available, get an identity token for accessing the registry without password.
         /// </summary>
         /// <remarks>
@@ -22,7 +22,7 @@ namespace Docker.DotNet
 
         /// <summary>
         /// Get version.
-        /// 
+        ///
         /// Returns the version of Docker that is running and various information about the system that Docker is running on.
         /// </summary>
         /// <remarks>
@@ -35,7 +35,7 @@ namespace Docker.DotNet
 
         /// <summary>
         /// Ping.
-        /// 
+        ///
         /// This is a dummy endpoint you can use to test if the server is accessible.
         /// </summary>
         /// <remarks>
@@ -60,7 +60,7 @@ namespace Docker.DotNet
 
         /// <summary>
         /// Monitor events.
-        /// 
+        ///
         /// Stream real-time events from the server.
         ///
         /// Various objects within Docker report events when something happens to them.

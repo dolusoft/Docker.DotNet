@@ -1,12 +1,11 @@
+using Docker.DotNet.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Docker.DotNet.Models;
-using Newtonsoft.Json;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -68,7 +67,6 @@ namespace Docker.DotNet.Tests
             await Task.Delay(1);
 
             await Assert.ThrowsAsync<TaskCanceledException>(() => _dockerClient.System.MonitorEventsAsync(new ContainerEventsParameters(), progress, cts.Token));
-
         }
 
         [Fact]

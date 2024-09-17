@@ -1,6 +1,5 @@
 using Docker.DotNet.Models;
 using System;
-using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -58,7 +57,7 @@ namespace Docker.DotNet
             {
                 throw new ArgumentNullException(nameof(name));
             }
-            
+
             return this._client.MakeRequestAsync(this._client.NoErrorHandlers, HttpMethod.Delete, $"volumes/{name}", cancellationToken);
         }
 

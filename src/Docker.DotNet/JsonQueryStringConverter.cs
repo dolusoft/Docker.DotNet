@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
-using Newtonsoft.Json;
 
 namespace Docker.DotNet.Models
 {
@@ -15,7 +15,7 @@ namespace Docker.DotNet.Models
         {
             Debug.Assert(o != null);
 
-            return new[] {JsonConvert.SerializeObject(o, Formatting.None)};
+            return new[] { JsonConvert.SerializeObject(o, Formatting.None) };
         }
     }
 }

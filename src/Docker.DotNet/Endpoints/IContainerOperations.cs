@@ -146,7 +146,7 @@ namespace Docker.DotNet
         /// <param name="id">The ID or name of the container.</param>
         /// <param name="parameters">Specifics of how to perform the operation.</param>
         /// <param name="cancellationToken">When triggered, the operation will stop at the next available time, if possible.</param>
-        /// <returns>A <see cref="Task{TResult}"/> that resolves to a <see cref="Stream"/>, which can be used to read the frames of statistics. For details 
+        /// <returns>A <see cref="Task{TResult}"/> that resolves to a <see cref="Stream"/>, which can be used to read the frames of statistics. For details
         /// on the format, refer to <a href="https://docs.docker.com/engine/api/v1.41/#operation/ContainerStats">the Docker Engine API documentation</a>.
         /// </returns>
         /// <remarks>The corresponding commands in the Docker CLI are <c>docker stats</c> and <c>docker container stats</c>.</remarks>
@@ -272,7 +272,7 @@ namespace Docker.DotNet
         /// <param name="cancellationToken">When triggered, the operation will stop at the next available time, if possible.</param>
         /// <returns>A <see cref="Task"/> that resolves when the operation is complete.</returns>
         /// <remarks>
-        /// This uses the freeze cgroup to suspend all processes in the container. The processes are unaware that they are being 
+        /// This uses the freeze cgroup to suspend all processes in the container. The processes are unaware that they are being
         /// suspended (e.g., they cannot capture a SIGSTOP signal).
         /// </remarks>
         /// <remarks>The corresponding commands in the Docker CLI are <c>docker pause</c> and <c>docker container pause</c>.</remarks>
@@ -301,7 +301,7 @@ namespace Docker.DotNet
         /// Attaches to a container to read its output and send it input.
         /// </summary>
         /// <param name="id">The ID or name of the container.</param>
-        /// <param name="tty">Indicates whether the stream is a TTY stream. When <see langword="true"/>, <c>stdout</c> and <c>stderr</c> are 
+        /// <param name="tty">Indicates whether the stream is a TTY stream. When <see langword="true"/>, <c>stdout</c> and <c>stderr</c> are
         /// combined into a single, undifferentiated stream. When <see langword="false"/>, the stream is multiplexed.</param>
         /// <param name="parameters">Specifics of how to perform the operation.</param>
         /// <param name="cancellationToken">When triggered, the operation will stop at the next available time, if possible.</param>
@@ -325,7 +325,7 @@ namespace Docker.DotNet
         /// </summary>
         /// <param name="id">The ID or name of the container.</param>
         /// <param name="cancellationToken">When triggered, the operation will stop at the next available time, if possible.</param>
-        /// <returns>A <see cref="Task{TResult}"/> that resolves to a <see cref="ContainerWaitResponse"/> when the container has 
+        /// <returns>A <see cref="Task{TResult}"/> that resolves to a <see cref="ContainerWaitResponse"/> when the container has
         /// stopped.</returns>
         /// <remarks>The corresponding commands in the Docker CLI are <c>docker wait</c> and <c>docker container wait</c>.</remarks>
         /// <exception cref="DockerContainerNotFoundException">No such container was found.</exception>
@@ -354,7 +354,7 @@ namespace Docker.DotNet
         /// </summary>
         /// <param name="id">The ID or name of the container.</param>
         /// <param name="parameters">Specifics of how to perform the operation.</param>
-        /// <param name="statOnly">If <see langword="true"/>, the method will only return file information; otherwise, it will return a 
+        /// <param name="statOnly">If <see langword="true"/>, the method will only return file information; otherwise, it will return a
         /// stream of the filesystem as a tarball.</param>
         /// <param name="cancellationToken">When triggered, the operation will stop at the next available time, if possible.</param>
         /// <returns>A <see cref="Task{TResult}"/> that resolves to a <see cref="GetArchiveFromContainerResponse"/>, which holds
@@ -375,7 +375,7 @@ namespace Docker.DotNet
         /// <returns>A <see cref="Task"/> that resolves when the operation completes.</returns>
         /// <exception cref="DockerContainerNotFoundException">No such container was found, or the path does not exist inside the container.</exception>
         /// <exception cref="ArgumentNullException">One or more of the inputs was <see langword="null"/>.</exception>
-        /// <exception cref="DockerApiException">Permission is denied (the volume or container rootfs is marked read-only), 
+        /// <exception cref="DockerApiException">Permission is denied (the volume or container rootfs is marked read-only),
         /// the input is invalid, or the daemon experienced an error.</exception>
         /// <exception cref="HttpRequestException">The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
         Task ExtractArchiveToContainerAsync(string id, ContainerPathStatParameters parameters, Stream stream, CancellationToken cancellationToken = default(CancellationToken));
@@ -385,7 +385,7 @@ namespace Docker.DotNet
         /// </summary>
         /// <param name="parameters">Specifics of how to perform the operation.</param>
         /// <param name="cancellationToken">When triggered, the operation will stop at the next available time, if possible.</param>
-        /// <returns>A <see cref="Task{TResult}"/> that resolves to a <see cref="ContainersPruneResponse"/>, which details which containers 
+        /// <returns>A <see cref="Task{TResult}"/> that resolves to a <see cref="ContainersPruneResponse"/>, which details which containers
         /// were removed.</returns>
         /// <remarks>The corresponding command in the Docker CLI is <c>docker container prune</c>.</remarks>
         /// <exception cref="ArgumentNullException">One or more of the inputs was <see langword="null"/>.</exception>

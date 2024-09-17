@@ -1,9 +1,9 @@
 using System;
 using System.IO;
-using System.Text;
+using System.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Security;
+using System.Text;
 
 namespace Docker.DotNet.X509
 {
@@ -86,14 +86,12 @@ namespace Docker.DotNet.X509
                 // Use "1" to indicate RSA.
                 var csp = new CspParameters(1)
                 {
-
                     // Set the KeyContainerName so that native code that looks up the private key
                     // can find it. This produces a keyset file on disk as a side effect.
                     KeyContainerName = pemFilePath
                 };
                 var rsaProvider = new RSACryptoServiceProvider(csp)
                 {
-
                     // Setting to false makes sure the keystore file will be cleaned up
                     // when the current process exits.
                     PersistKeyInCsp = false
@@ -168,7 +166,7 @@ namespace Docker.DotNet.X509
                     index = 0;
                     while ((c = rdr.ReadChar()) != delim)
                     {
-                        if(c == '\r')
+                        if (c == '\r')
                         {
                             continue;
                         }

@@ -1,3 +1,4 @@
+using Microsoft.Net.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +9,6 @@ using System.Net.Http;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Net.Http.Client;
 
 namespace Docker.DotNet
 {
@@ -294,7 +294,7 @@ namespace Docker.DotNet
             IDictionary<string, string> headers,
             CancellationToken token)
         {
-            var response = await  PrivateMakeRequestAsync(SInfiniteTimeout, HttpCompletionOption.ResponseHeadersRead, method, path, queryString, headers, body, token).ConfigureAwait(false);
+            var response = await PrivateMakeRequestAsync(SInfiniteTimeout, HttpCompletionOption.ResponseHeadersRead, method, path, queryString, headers, body, token).ConfigureAwait(false);
             await HandleIfErrorResponseAsync(response.StatusCode, response)
                 .ConfigureAwait(false);
             return response;
